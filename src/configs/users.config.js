@@ -6,6 +6,14 @@ module.exports = {
     screennames: {
         minCharacters: 1,
         maxCharacters: 24,
+        reserved: [
+            "about",
+            "home",
+            "admin",
+            "administrator",
+            "debug",
+            "api"
+        ]
     },
     usernames: {
         minCharacters: 3,

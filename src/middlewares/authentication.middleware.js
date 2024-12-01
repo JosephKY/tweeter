@@ -1,7 +1,8 @@
 const jsonwebtoken = require("jsonwebtoken")
+const { User } = require("../models/user.model")
 require("dotenv").config()
 
-module.exports = (req, res, next)=>{
+module.exports = async (req, res, next)=>{
     let token = req.cookies.auth;
     if(!token){
         return next()
@@ -11,7 +12,16 @@ module.exports = (req, res, next)=>{
         if(!jwt.iss == "tweeter"){
             return next()
         }
-        req.user = jwt.sub
+        let dbUser = await User.findOne({
+            where: {
+                id: jwt.sub
+            }
+        })
+        if(!dbUser){
+            res.clearCookie("auth")
+            return next()
+        }
+        req.user = dbUser
         next()
     } catch(e){
         next()

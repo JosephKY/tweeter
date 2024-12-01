@@ -26,7 +26,7 @@ dbFileNames.forEach(async dbFileName=>{
     syncPromises.push(
         init(db).sync({
             alter: true,
-            force: false
+            force: true
         })
     )
 })

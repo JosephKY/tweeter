@@ -1,4 +1,4 @@
-const { app } = require("../services/app")
+const { app } = require("../services/app.service")
 const path = require("path")
 const fs = require("fs")
 
