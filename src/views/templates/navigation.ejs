@@ -1,0 +1,9 @@
+<div id="nav">
+    <a href="/home">Home</a>
+    <a href="/search">Search</a>
+    <% if (user) { %>
+        <a href="<%-user.username%>">My Profile</a>
+    <% } else { %>
+        <a href="/login">Login</a>
+    <% } %>
+</div>

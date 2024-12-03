@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tweeter - Login</title>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/login.css">
+        <meta name="viewport" width="device-width" initial-scale="1.0">
+    </head>
+    <script>
+        const userId = <%if(user) {%>'<%=user._id%>'<%} else {%>null<%}%>;
+    </script>
+    <body>
+        <div id="wrapper">
+            <%-include('templates/header.ejs')%>
+            <%-include('templates/navigation.ejs')%>
+            <main>
+                <h1>Login</h1>
+                <h2>If you already have an account</h2>
+                <span>Username</span><br>
+                <input type="text" id="username" name="username"><br>
+                <span>Password</span><br>
+                <input type="password" id="password" name="password"><br>
+                <button id="login">Login</button>
+                <h1>Create an Account</h1>
+                <h2>If you haven't made one yet</h2>
+                <span>Username</span><br>
+                <input type="text" id="createusername" name="username"><br>
+                <span>Display Name</span><br>
+                <input type="text" id="createscreenname" name="screenname"><br>
+                <span>Password</span><br>
+                <input type="password" id="createpassword" name="password"><br>
+                <span>Verify Password</span><br>
+                <input type="password" id="createverifypassword" name="verifypassword"><br>
+                <button id="create">Create Account</button>
+            </main>
+            <%-include('templates/footer.ejs')%>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/login.js"></script>
+</html>

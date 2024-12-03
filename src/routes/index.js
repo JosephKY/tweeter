@@ -12,4 +12,8 @@ routeFileNames.forEach(routeFileName=>{
     console.log("Routed: ", routeFileName)
 })
 
+app.get("*", (req, res)=>{
+    res.send("404 Not Found")
+})
+
 console.log("Routes set-up complete")

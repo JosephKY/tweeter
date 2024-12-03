@@ -1,0 +1,270 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#2FCDFF 70%, #000 180%);
+}
+
+#logo {
+    height: 50px;
+    padding: 10px 0;
+    filter: brightness(4.9);
+    transition: .2s;
+}
+
+#nav {
+    background: linear-gradient(#e3e3e3, 100%, #626262 200%);
+    border-bottom: 1px solid #c6c6c6;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#nav a {
+    font-family: system-ui;
+    color: #373737;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
+
+#footer {
+    margin-top: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background: #ececec;
+    border-top: 1px solid #c6c6c6;
+    padding: 10px 0;
+    color: #000000a8;
+}
+
+#footer p {
+    margin: 0;
+    font-family: system-ui;
+}
+
+#wrapper {
+    background: #00000024;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+main {
+    background: #fff;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+#logo:hover {
+    filter: brightness(6);
+}
+
+
+#latest h1 {
+    font-family: system-ui;
+    margin: 0;
+    text-align: center;
+    background: #3ec9ff;
+    color: white;
+    border-radius: 10px;
+}
+
+#latest {
+    width: 400px;
+    margin: auto;
+    padding: 32px;
+}
+
+#latestLoading {
+    font-family: system-ui;
+    text-align: center;
+}
+
+
+.tweet {
+    padding: 8px 0;
+    background: #fff;
+}
+
+.tweetHeader {
+    font-family: system-ui;
+    display: flex;
+    flex-flow: column;
+}
+
+
+.tweetScreenname {
+    font-size: 1.25em;
+}
+
+#tweetContent textarea {
+    width: 100%;
+    display: block;
+}
+
+.tweetContent textarea {
+    width: 100%;
+}
+
+
+.tweetContent p {
+    font-family: system-ui;
+    margin-bottom: 0;
+}
+
+.tweetFooter {
+    font-family: system-ui;
+    font-size: .85em;
+    color: #666;
+}
+
+
+#tweets {
+    display: flex;
+    flex-flow: column;
+    background: #c1c1c1;
+    gap: 1px;
+    overflow-y: auto;
+    height: 450px;
+}
+
+.tweetUsername {
+    color: #2595c1;
+}
+
+.favoriteIcon {
+    background-image: url('/assets/favoutline.png');
+    width: 26px;
+    height: 26px;
+    display: block;
+    background-size: 26px 26px;
+}
+
+.favoriteIcon.selected {
+    background-image: url('/assets/favfilled.png')
+}
+
+
+.favoriteButton {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 6px;
+    border-radius: 6px;
+    transition: .2s;
+    margin: 7px 0;
+  }
+  .favoriteCount {
+    font-size: 1.2em;
+    color: #3E3E3E;
+  }
+  .favoriteButton:hover {
+    cursor: pointer;
+    background: #EEE;
+  }
+
+#footer p {
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    body {
+        height: auto;
+    }
+
+    #wrapper {
+        width: 850px;
+        margin: 32px auto;
+        box-shadow: 0 0 19px #00000063;
+    }
+
+    #header {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    #footer {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    #latest {
+        width: 100%;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+    }
+
+    #latest h1 {
+        border-radius: 0;
+    }
+
+    .tweet {
+        padding: 0 20px;
+    }
+
+    .tweetFooter {
+        margin-bottom:20px;
+        font-size: 1.2em;
+    }
+
+    #tweets {
+        height: 600px;
+        flex-grow: 1;
+    }
+
+    #nav a {
+        font-size: 1.3em;
+    }
+
+    #nav {
+        gap: 16px;
+    }
+
+    .tweetScreenname {
+        margin-top: 20px;
+        font-size: 1.5em;
+    }
+
+    .tweetUsername {
+        font-size: 1.2em;
+    }
+
+    .tweetContent p {
+        font-size: 1.2em;
+    }
+
+    .favoriteIcon {
+        width: 36px;
+        height: 36px;
+        background-size: 36px 36px;
+    }
+
+    .favoriteCount {
+        font-size: 1.5em;
+    }
+
+    .favoriteButton {
+        padding: 12px;
+    }
+}

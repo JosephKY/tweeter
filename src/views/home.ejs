@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tweeter - Home</title>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/home.css">
+        <meta name="viewport" width="device-width" initial-scale="1.0">
+    </head>
+    <script>
+        const userId = <%if(user) {%>'<%=user._id%>'<%} else {%>null<%}%>;
+    </script>
+    <body>
+        <div id="wrapper">
+            <%-include('templates/header.ejs')%>
+            <%-include('templates/navigation.ejs')%>
+            <main>
+                <div id="latest">
+                    <h1>Latest Tweets</h1>
+                    <p id="latestLoading">Loading...</p>
+                    <div id="tweets"></div>
+                </div>
+
+            </main>
+            <%-include('templates/footer.ejs')%>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/home.js"></script>
+</html>

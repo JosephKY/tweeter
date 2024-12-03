@@ -1,9 +1,10 @@
-const { Model, DataTypes } = require("sequelize")
+const { Model, DataTypes } = require("sequelize");
+const { Favorite } = require("./favorite.model");
 
 class Tweet extends Model {}
 
-function init(db){
-    return Tweet.init({
+function init(db) {
+    Tweet.init({
         author: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -20,13 +21,36 @@ function init(db){
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
+        },
+        favoritesCount: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                return this._favoritesCount || 0; 
+            },
+            set(value) {
+                this._favoritesCount = value; 
+            }
         }
     }, {
         timestamps: true,
         updatedAt: false,
         createdAt: "created",
-        sequelize: db
-    })
+        sequelize: db,
+        hooks: {
+            afterFind: async (results) => {
+                if (!results) return;
+                const instances = Array.isArray(results) ? results : [results];
+                for (const instance of instances) {
+                    if (instance.id) {
+                        const count = await Favorite.count({ where: { post: instance.id } });
+                        instance.setDataValue("favoritesCount", count);
+                    }
+                }
+            }
+        }
+    });
+
+    return Tweet;
 }
 
-module.exports = { Tweet, init }
+module.exports = { Tweet, init };

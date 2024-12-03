@@ -1,3 +1,3 @@
 module.exports = (req, res)=>{
-    res.render("user")
+    res.render("user", {user: req.user || null})
 }

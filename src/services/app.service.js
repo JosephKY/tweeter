@@ -5,7 +5,7 @@ const { static } = require("express")
 const bodyParser = require("body-parser")
 const jsonParser = bodyParser.json()
 
-app.use(static('public'))
+app.use(static('src/public'))
 app.set('view engine', 'ejs')
 app.set('views', path.join(process.cwd(), "src", "views"))
 app.use(require("cookie-parser")())

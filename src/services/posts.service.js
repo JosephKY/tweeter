@@ -1,7 +1,26 @@
 const { Favorite } = require("../models/favorite.model")
 const { Tweet } = require("../models/tweet.model")
 
+function isFavoritedConverter(postOrPosts, user){
+    return new Promise(async (resolve, reject) => {
+        try {
+            if(Array.isArray(postOrPosts)){
+                for(let post of postOrPosts){
+                    post.dataValues.isFavorited = await hasFavorited(user, post)
+                }
+            } else {
+                postOrPosts.dataValues.isFavorited = await hasFavorited(user, postOrPosts)
+            }
+            resolve(postOrPosts)
+        } catch (e) {
+            reject(e)
+        }
+        
+    });
+}
+
 function hasFavorited(user, post){
+    if(!user)return false;
     return new Promise(async (resolve, reject)=>{
         try {
             let existingFav = await Favorite.findOne({
@@ -92,6 +111,7 @@ function postsLatest(){
             let posts = await Tweet.findAll({
                 limit: 25
             })
+            
             resolve(posts)
         } catch(e) {
             reject(e)
@@ -115,4 +135,4 @@ function postsUser(user){
     })
 }
 
-module.exports = { hasFavorited, favoriteCreate, favoriteDelete, postCreate, postDelete, postsLatest, postsUser }
+module.exports = { hasFavorited, favoriteCreate, favoriteDelete, postCreate, postGet, postDelete, postsLatest, postsUser, isFavoritedConverter }
