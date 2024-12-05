@@ -1,4 +1,5 @@
 const usersConfig = require("../../configs/users.config") 
+const authenticationHelper = require("../../helpers/authentication.helper")
 const { userGetByUsername, userCreate } = require("../../services/users.service")
 const xss = require("xss")
 
@@ -40,7 +41,7 @@ module.exports = async (req, res, next)=>{
 
         if(
             !password ||
-            typeof password != 'stirng' || 
+            typeof password != 'string' || 
             password.length < usersConfig.passwords.minCharacters ||
             password.length > usersConfig.passwords.maxCharacters
         ){
@@ -49,6 +50,7 @@ module.exports = async (req, res, next)=>{
 
         const newuser = await userCreate(screenname, username, password)
         delete newuser.dataValues.passhash
+        authenticationHelper.authorize(res, newuser.id)
         res.status(200).json(newuser.dataValues)
     } catch (e) {
         console.log(e)

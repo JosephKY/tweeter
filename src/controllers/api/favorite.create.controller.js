@@ -15,7 +15,7 @@ module.exports = async(req, res, next)=>{
         if(!post){
             return res.sendStatus(404)
         }
-        if(postsService.hasFavorited(req.user, post)){
+        if(await postsService.hasFavorited(req.user, post)){
             return res.sendStatus(400)
         }
         await postsService.favoriteCreate(req.user, post)

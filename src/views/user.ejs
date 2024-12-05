@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tweeter</title>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/user.css">
+        <meta name="viewport" width="device-width" initial-scale="1.0">
+    </head>
+    <script>
+        const userId = <%if(user) {%><%=user.id%><%} else {%>null<%}%>;
+    </script>
+    <body>
+        <div id="wrapper">
+            <%-include('templates/header.ejs')%>
+            <%-include('templates/navigation.ejs')%>
+            <main>
+                <h1 id="screenname">123456789012345678901234</h1>
+                <h2 id="username">@123456789012345678901234</h2>
+                <p id="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus et risus vulputate blandit. Suspendisse malesuada veaa</p>
+                <div id="switches">
+                    <button id="latestButton" class="selected">Latest</button>
+                    <button id="favoritesButton">Favorites</button>
+                </div>
+                <div id="feeds">
+                    <div id="latest" class="feed">
+                        <p id="latestLoading" class="feedload">Loading...</p>
+                        <div id="latestTweets" class="feedtweets"></div>
+                    </div>
+                    <div id="favorites" class="feed hidden">
+                        <p id="favoriteLoading" class="feedload">Loading...</p>
+                        <div id="favoriteTweets" class="feedtweets"></div>
+                    </div>
+                </div>
+            </main>
+            <%-include('templates/footer.ejs')%>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/user.js"></script>
+</html>

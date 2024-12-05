@@ -7,17 +7,17 @@
         <meta name="viewport" width="device-width" initial-scale="1.0">
     </head>
     <script>
-        const userId = <%if(user) {%>'<%=user._id%>'<%} else {%>null<%}%>;
+        const userId = <%if(user) {%><%=user.id%><%} else {%>null<%}%>;
     </script>
     <body>
         <div id="wrapper">
             <%-include('templates/header.ejs')%>
             <%-include('templates/navigation.ejs')%>
             <main>
-                <div id="latest">
+                <div id="latest" class="feed">
                     <h1>Latest Tweets</h1>
-                    <p id="latestLoading">Loading...</p>
-                    <div id="tweets"></div>
+                    <p id="latestLoading" class="feedload">Loading...</p>
+                    <div id="tweets" class="feedtweets"></div>
                 </div>
 
             </main>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tweeter - About Us</title>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/about.css">
+        <meta name="viewport" width="device-width" initial-scale="1.0">
+    </head>
+    <script>
+        const userId = <%if(user) {%><%=user.id%><%} else {%>null<%}%>;
+    </script>
+    <body>
+        <div id="wrapper">
+            <%-include('templates/header.ejs')%>
+            <%-include('templates/navigation.ejs')%>
+            <main>
+                <h1>About Us</h1>
+                <p>Welcome to Tweeter! Tweeter is an online social networking platform where you can share and discover Tweets and other Tweeters. You're free to explore the platform and its Tweets and Tweeters without an account, but we invite you to <a href="/login">create and account</a> (if you haven't done so already) and get involved today!</p>
+                <img src="/assets/aboutusgraphic.png" alt="Person holding a phone with the Tweeter home screen displayed" id="graphic">
+            </main>
+            <%-include('templates/footer.ejs')%>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/scripts/main.js"></script>
+</html>

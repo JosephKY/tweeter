@@ -24,6 +24,8 @@ module.exports = async (req, res, next)=>{
         req.user = dbUser
         next()
     } catch(e){
+        res.clearCookie("auth")
+        console.log(e)
         next()
     }
 }

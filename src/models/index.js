@@ -8,7 +8,8 @@ const db = new sequelize.Sequelize({
     password: env.DB_PASS,
     host: env.DB_HOST,
     database: env.DB_NAME,
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
 })
 
 let syncPromises = [];
@@ -26,7 +27,7 @@ dbFileNames.forEach(async dbFileName=>{
     syncPromises.push(
         init(db).sync({
             alter: true,
-            force: true
+            force: false
         })
     )
 })

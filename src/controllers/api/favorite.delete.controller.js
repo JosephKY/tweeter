@@ -3,8 +3,8 @@ const { Tweet } = require("../../models/tweet.model")
 
 module.exports = async(req, res, next)=>{
     try {
-        let postId = req.body.post;
-        if(!postId || typeof postId != 'number' || postId < 0){
+        let postId = parseInt(req.body.post);
+        if(!postId || isNaN(postId) || postId < 0){
             return res.sendStatus(400)
         }
         let post = await Tweet.findOne({
@@ -12,6 +12,7 @@ module.exports = async(req, res, next)=>{
                 id: postId
             }
         })
+        console.log(post)
         if(!post){
             return res.sendStatus(404)
         }

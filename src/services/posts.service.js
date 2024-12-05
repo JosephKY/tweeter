@@ -30,11 +30,11 @@ function hasFavorited(user, post){
                 }
             })
             if(
-                existingFav
+                existingFav == null
             ){
-                return resolve(existingFav)
+                return resolve(false)
             }
-            resolve(false)
+            resolve(existingFav)
         } catch(e) {
             reject(e)
         }
@@ -135,4 +135,28 @@ function postsUser(user){
     })
 }
 
-module.exports = { hasFavorited, favoriteCreate, favoriteDelete, postCreate, postGet, postDelete, postsLatest, postsUser, isFavoritedConverter }
+function favoritesUser(user, limit=25){
+    return new Promise(async (resolve, reject) => {
+        try {
+            let favorites = await Favorite.findAll({
+                limit: limit,
+                where: {
+                    user: user.id
+                }
+            })
+            let posts = [];
+            for(let favorite of favorites){
+                posts.push(await Tweet.findOne({
+                    where: {
+                        id: favorite.post
+                    }
+                }))
+            }
+            resolve(posts)
+        } catch(e) {
+            reject(e)
+        }
+    });
+}
+
+module.exports = { hasFavorited, favoriteCreate, favoriteDelete, postCreate, postGet, postDelete, postsLatest, postsUser, isFavoritedConverter, favoritesUser }

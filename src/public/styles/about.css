@@ -1,0 +1,30 @@
+main {
+    font-family: system-ui;
+    padding: 32px;
+}
+
+
+#graphic {
+    width: 300px;
+    float: right;
+    box-shadow: 5px 5px 0px #4eacff;
+}
+
+main p {
+    float: left;
+    width: calc(100% - 300px);
+    padding-right: 16px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 550px) {
+    main p {
+        float: none;
+        width: auto;
+    }
+
+    #graphic {
+        width: 100%;
+        float: none;
+    }
+}

@@ -17,11 +17,6 @@ function init(db) {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4
         },
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         favoritesCount: {
             type: DataTypes.VIRTUAL,
             get() {

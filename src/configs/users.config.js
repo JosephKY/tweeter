@@ -22,7 +22,10 @@ module.exports = {
             "admin",
             "administrator",
             "debug",
-            "api"
+            "api",
+            "search",
+            "logout",
+            "login"
         ]
     }
 }

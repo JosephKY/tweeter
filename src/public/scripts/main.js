@@ -1,3 +1,43 @@
+const configs = {
+    user: {
+        passwords: {
+            minCharacters: 8,
+            maxCharacters: 64
+        },
+        screennames: {
+            minCharacters: 1,
+            maxCharacters: 24,
+        },
+        usernames: {
+            minCharacters: 3,
+            maxCharacters: 24,
+            allowedCharacters: [
+                "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+                "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+                "0","1","2","3","4","5","6","7","8","9",
+                "_","-","."
+            ],
+            reserved: [
+                "about",
+                "home",
+                "admin",
+                "administrator",
+                "debug",
+                "api",
+                "search",
+                "logout",
+                "login"
+            ]
+        },
+        bios: {
+            maxCharacters: 128
+        }
+    },
+    post: {
+        maxCharacters: 140
+    }
+}
+
 function tweetGenerator(username, screenname, content, created, favCount, isFavorited, id){
     const tweetContainer = document.createElement("div")
     tweetContainer.classList.add("tweet")
@@ -41,6 +81,7 @@ function tweetGenerator(username, screenname, content, created, favCount, isFavo
     const tweetFavoriteCount = document.createElement("span")
     tweetFavoriteCount.classList.add("favoriteCount")
     tweetFavoriteCount.innerHTML = favCount;
+    if(isFavorited)tweetFavoriteCount.innerHTML = parseInt(tweetFavoriteCount.innerHTML) + 1
     tweetFavoriteButton.appendChild(tweetFavoriteCount)
 
     const tweetFooter = document.createElement("div")
@@ -95,4 +136,16 @@ function userData(id){
         }) 
     });
     
+}
+
+if(userId){
+    document.getElementById("logout").addEventListener("click", ()=>{
+        $.ajax({
+            url: '/api/users/logout',
+            type: 'POST',
+            success: ()=>{
+                window.location.href = "/home"
+            }
+        })
+    })
 }

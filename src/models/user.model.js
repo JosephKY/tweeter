@@ -26,11 +26,6 @@ function init(db){
         uuid: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4
-        },
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
         }
     }, {
         timestamps: true,

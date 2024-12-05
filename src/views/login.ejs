@@ -20,7 +20,8 @@
                 <input type="text" id="username" name="username"><br>
                 <span>Password</span><br>
                 <input type="password" id="password" name="password"><br>
-                <button id="login">Login</button>
+                <button id="login">Login</button><br>
+                <span id="loginerror" style="color: red"></span>
                 <h1>Create an Account</h1>
                 <h2>If you haven't made one yet</h2>
                 <span>Username</span><br>
@@ -31,7 +32,8 @@
                 <input type="password" id="createpassword" name="password"><br>
                 <span>Verify Password</span><br>
                 <input type="password" id="createverifypassword" name="verifypassword"><br>
-                <button id="create">Create Account</button>
+                <button id="create">Create Account</button><br>
+                <span id="createerror" style="color: red"></span>
             </main>
             <%-include('templates/footer.ejs')%>
         </div>
